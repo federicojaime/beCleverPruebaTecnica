@@ -1,8 +1,8 @@
-# Prueba Tecnica Be Clever 
+# Prueba Tecnica Beclever 
 
 ## API REST para Registro de Empleados 📝
 
->> Este repositorio contiene la implementación de una API REST desarrollada como parte de la prueba técnica solicitada durante mi proceso de postulación para el puesto en la empresa BeClever.
+>> Este repositorio contiene la implementación de una API REST desarrollada como parte de la prueba técnica solicitada durante mi proceso de postulación para el puesto en la empresa Beclever.
 
 
 ---

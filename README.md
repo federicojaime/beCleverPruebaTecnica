@@ -66,8 +66,3 @@ de datos.
 
 **Fecha:** 05/12/2023
 
->> Esta API se ha desarrollado en cumplimiento con los requisitos y especificaciones proporcionados en la prueba técnica de BeClever. Agradezco la oportunidad de participar en este proceso y estoy disponible para cualquier aclaración o pregunta adicional.
-
-**Autor:** [Federico Jaime](https://www.linkedin.com/in/federicojaime/)
-
-**Fecha:** 05/12/2023

@@ -7,7 +7,7 @@
 
 ---
 
-![This is an alt text.](https://media.licdn.com/dms/image/D4D0BAQHss9TIwqi1pg/company-logo_200_200/0/1692821638261/beclevercorp_logo?e=2147483647&v=beta&t=IkIkQTMQ1Y0Z8ItVdlUPOAY7AKtE9Srf1hBuVH1eFHg "Logo de la empresa Be Clever.")
+![This is an alt text.](https://cessi.org.ar/wp-content/uploads/2022/03/beclever.jpg "Logo de la empresa Be Clever.")
 
 
  **Descripción** 

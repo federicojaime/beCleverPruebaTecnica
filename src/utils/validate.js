@@ -42,7 +42,9 @@ class Validate {
                   const horarioObj = new Date(`1970-01-01T${v}`);
                   const horario = horarioObj.toISOString().slice(11, 19);
                   if (horario !== v) {
-                    this.errors.push(`${key} [${v}] no es un horario válido.`);
+                    this.errors.push(
+                      `${key} [${v}] no es un horario válido. ${horario}`
+                    );
                   }
                   break;
                 case "array":

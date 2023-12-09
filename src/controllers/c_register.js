@@ -1,4 +1,5 @@
 const db = require("../db/connection.js");
+const Validate = require("../utils/validate.js");
 
 const register = async (req, res) => {
   var respuesta = {
@@ -7,6 +8,15 @@ const register = async (req, res) => {
     totalRegistros: 0,
     data: [],
   };
+  var verificar = {
+    date: { type: "date" },
+  };
+  var valid = new Validate(null);
+  valid.validar(req.body, verificar);
+  if (valid.hasErrors()) { 
+    res.status(409).json(valid.getErrors());
+    return;
+  }
   let conn = db();
   conn.query(
     `INSERT INTO registros SET idemployee = ${req.body.idemployee}, date= '${req.body.date}', hora= '${req.body.hora}', registertype= ${req.body.registertype},  

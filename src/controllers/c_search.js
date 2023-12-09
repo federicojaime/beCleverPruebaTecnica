@@ -17,9 +17,9 @@ const searchNombre = async (req, res) => {
         INNER JOIN bussines ON bussines.id = registros.businesslocation
     WHERE
 
-        idemployee IN (SELECT id from personal WHERE personal.nombre LIKE "%${req.params.nombre}%")
+        idemployee IN (SELECT id from personal WHERE UPPER(personal.nombre) LIKE "%${req.params.nombre.toUpperCase()}%")
         AND date BETWEEN '${req.params.fechaD}' AND '${req.params.fechaH}'
-        AND businesslocation = (SELECT id from bussines WHERE bussines.nombre = "${req.params.sucursal}")
+        AND businesslocation = (SELECT id from bussines WHERE UPPER(bussines.nombre) = "${req.params.sucursal.toUpperCase()}")
     GROUP BY personal.nombre, personal.apellido, tipos.descripcion, bussines.nombre`,
     async function (error, results, fields) {
       if (error) {
@@ -53,9 +53,9 @@ const searchApellido = async (req, res) => {
     WHERE
 
         idemployee IN (SELECT id from personal WHERE
-        personal.apellido LIKE "%${req.params.apellido}%")
+        UPPER(personal.apellido) LIKE "%${req.params.apellido.toUpperCase()}%")
         AND date BETWEEN '${req.params.fechaD}' AND '${req.params.fechaH}'
-        AND businesslocation = (SELECT id from bussines WHERE bussines.nombre = "${req.params.sucursal}")
+        AND businesslocation = (SELECT id from bussines WHERE UPPER(bussines.nombre) = "${req.params.sucursal.toUpperCase()}")
     GROUP BY personal.nombre, personal.apellido, tipos.descripcion, bussines.nombre`,
     async function (error, results, fields) {
       if (error) {

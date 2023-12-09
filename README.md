@@ -24,25 +24,24 @@
 
 ```
 └── 📁beCleverPruebaTecnica
-   └── .dockerignore
-   └── .env
-   └── .env.example
-   └── Dockerfile
-   └── package.json
-   └── README.md
-   └── 📁src
-       └── 📁controllers
-           └── c_register.js
-           └── c_search.js
-           └── c_users.js
-       └── 📁db
-           └── connection.js
-       └── 📁docs
-           └── beclever.sql
-       └── index.js
-       └── openapi.json
-       └── 📁utils
-           └── config.js
+    └── .dockerignore
+    └── .env.example
+    └── Dockerfile
+    └── package.json
+    └── README.md
+    └── 📁src
+        └── 📁controllers
+            └── c_register.js
+            └── c_search.js
+            └── c_users.js
+        └── 📁db
+            └── connection.js
+        └── 📁docs
+            └── beclever.sql
+        └── index.js
+        └── openapi.json
+        └── 📁utils
+            └── config.js
 ```
 
 - **/src:** Contiene el código fuente de la API.

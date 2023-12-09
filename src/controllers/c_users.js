@@ -3,12 +3,23 @@ const bcryt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const config = require("../utils/config.js");
 const privateKey = config.PRIVATE_KEY_JWT;
+const Validate = require("../utils/validate.js");
 
 const setUser = async (req, res) => {
   var respuesta = {
     ok: false,
     msg: "Ocurrio un error al insertar el registro.",
   };
+  var verificar = {
+    user: { type: "string", min: 3, max: 50 },
+    pass: { type: "string", min: 3, max: 10 },
+  };
+  var valid = new Validate(null);
+  valid.validar(req.body, verificar);
+  if (valid.hasErrors()) {
+    res.status(409).json(valid.getErrors());
+    return;
+  }
   let hash = await bcryt.hash(req.body.pass, 10);
   let conn = db();
   conn.query(
@@ -41,7 +52,7 @@ const loginUser = async (req, res) => {
         res.status(409).json(respuesta);
         return;
       }
-      if (results.legth > 0) {
+      if (results.length > 0) {
         let ok = await bcryt.compare(req.body.pass, results[0].pass);
         if (ok) {
           let token = jwt.sign(

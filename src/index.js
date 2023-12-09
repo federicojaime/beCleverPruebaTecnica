@@ -6,8 +6,9 @@ const rRegister = require("./routes/r_register.js");
 const rSearch = require("./routes/r_search.js");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./openapi.json");
-const port = 3000;
-const privateKey = "asdasdashdijuhqweqweu";
+const port = process.env.PORT || 3000;
+const config = require("./utils/config.js");
+const privateKey = config.PRIVATE_KEY_JWT;
 
 const app = express();
 
@@ -32,21 +33,22 @@ app.use((req, res, next) => {
     next();
     return;
   }
-
-  if (!req.headers["authorization"]) {
-    res.send("Error no está autorizado por Token");
-  }
-  var token = req.headers["authorization"].split(" ");
-
-  jwt.verify(token[1], privateKey, (err, user) => {
-    if (err) {
-      res.send("Error Token Invalido. " + err);
-      return;
+  try {
+    if (!req.headers["authorization"]) {
+      res.send("Error no está autorizado por Token");
     }
-    //console.log(user);
-    //req.fede = user;
-    next();
-  });
+    var token = req.headers["authorization"].split(" ");
+
+    jwt.verify(token[1], privateKey, (err, user) => {
+      if (err) {
+        res.send("Error Token Invalido. " + err);
+        return;
+      }
+      next();
+    });
+  } catch (error) {
+    res.status(401).send("Error, token invalido.");
+  }
 });
 
 /* FIN DEL MIDDLEWARE */

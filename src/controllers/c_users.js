@@ -1,7 +1,8 @@
 const db = require("../db/connection.js");
 const bcryt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const privateKey = "asdasdashdijuhqweqweu";
+const config = require("../utils/config.js");
+const privateKey = config.PRIVATE_KEY_JWT;
 
 const setUser = async (req, res) => {
   var respuesta = {
@@ -10,7 +11,6 @@ const setUser = async (req, res) => {
   };
   let hash = await bcryt.hash(req.body.pass, 10);
   let conn = db();
-  console.log(req.body);
   conn.query(
     `INSERT INTO usuarios SET user = '${req.body.user}', pass = '${hash}'`,
     function (error, results, fields) {
@@ -41,21 +41,23 @@ const loginUser = async (req, res) => {
         res.status(409).json(respuesta);
         return;
       }
-      let ok = await bcryt.compare(req.body.pass, results[0].pass);
-      if (ok) {
-        let token = jwt.sign(
-          {
-            exp: Math.floor(Date.now() / 1000) + 60 * 60 * 8,
-            data: {
-              id: results[0].id,
-              user: results[0].user,
+      if (results.legth > 0) {
+        let ok = await bcryt.compare(req.body.pass, results[0].pass);
+        if (ok) {
+          let token = jwt.sign(
+            {
+              exp: Math.floor(Date.now() / 1000) + 60 * 60 * 8,
+              data: {
+                id: results[0].id,
+                user: results[0].user,
+              },
             },
-          },
-          privateKey,
-          { algorithm: "HS256" }
-        );
-        res.status(200).json({ token: token });
-        return;
+            privateKey,
+            { algorithm: "HS256" }
+          );
+          res.status(200).json({ token: token });
+          return;
+        }
       }
       res.status(401).json({ token: null });
       return;

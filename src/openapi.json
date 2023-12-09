@@ -1,0 +1,641 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Prueba tecnica Beclever - OpenAPI 3.0",
+    "description": "La API se ha diseñado para gestionar el registro de empleados en tres sucursales específicas. Permite realizar operaciones de creación y consulta de registros de empleados, interactuando con una base de datos subyacente.",
+    "contact": {
+      "email": "federiconj@gmail.com"
+    },
+    "version": "1.0.11"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "tags": [
+    {
+      "name": "users",
+      "description": "Todas las rutas referentes a usuarios."
+    },
+    {
+      "name": "register",
+      "description": "Todas las rutas referentes a usuarios."
+    },
+    {
+      "name": "search",
+      "description": "Todas las rutas referentes a usuarios."
+    }
+  ],
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Crear nuevos usuarios al sistema",
+        "description": "Crear nuevos usuarios al sistema",
+        "operationId": "users_1",
+        "requestBody": {
+          "description": "La ruta solicitará que ingrese su nombre de usuario y contraseña.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "user",
+                  "pass"
+                ],
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "string",
+                    "example": "fnj"
+                  },
+                  "pass": {
+                    "type": "string",
+                    "example": "qwery123"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Ok.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "msg": {
+                      "type": "string",
+                      "example": "Se inserto el usuario de forma correcta."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          },
+          "409": {
+            "description": "Ocurrio un error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "msg": {
+                      "type": "string",
+                      "example": "Ocurrio un error al insertar el registro."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/users/login": {
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Login de usuario",
+        "description": "Login de usuario para la obtención del JWT.",
+        "operationId": "users_2",
+        "requestBody": {
+          "description": "La ruta solicitará que ingrese su nombre de usuario y contraseña.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "user",
+                  "pass"
+                ],
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "string",
+                    "example": "fnj"
+                  },
+                  "pass": {
+                    "type": "string",
+                    "example": "qwery123"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Ok.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string",
+                      "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDIwMzA5MTIsImRhdGEiOnsiaWQiOjEsInVzZXIiOiJmbmoifSwiaWF0IjoxNzAyMDAyMTEyfQ.3wx-rV15qksOy7xlWWbUkoV-c91_hjIDutktEbn-6l0"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string",
+                      "example": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/register": {
+      "post": {
+        "tags": [
+          "register"
+        ],
+        "summary": "Es el servicio numero 2 solicitado en la prueba tecnica.",
+        "description": "Registra de ingresos y egresos del personal.",
+        "operationId": "register_1",
+        "requestBody": {
+          "description": "La ruta solicitará que ingrese idEmployee, date, hora, registertype",
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "user",
+                  "pass"
+                ],
+                "type": "object",
+                "properties": {
+                  "idEmployee": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "date": {
+                    "type": "string",
+                    "example": "2022-05-03"
+                  },
+                  "hora": {
+                    "type": "string",
+                    "example": "18:00:05"
+                  },
+                  "registertype": {
+                    "type": "integer",
+                    "example": 3
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Ok.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "msg": {
+                      "type": "string",
+                      "example": "Se inserto el registro de forma correcta."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Ocurrio un error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "msg": {
+                      "type": "string",
+                      "example": "Ocurrio un error al insertar el registro."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/register/employee": {
+      "post": {
+        "tags": [
+          "register"
+        ],
+        "summary": "Endpoint extra para generar nuevos empleados.",
+        "description": "Registra nuevos empleados.",
+        "operationId": "register_2",
+        "requestBody": {
+          "description": "La ruta solicitará que ingrese nombre, apellido, sexo",
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "user",
+                  "pass"
+                ],
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "type": "string",
+                    "example": "Federico"
+                  },
+                  "apellido": {
+                    "type": "string",
+                    "example": "Jaime"
+                  },
+                  "sexo": {
+                    "type": "string",
+                    "example": "M"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Ok.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "msg": {
+                      "type": "string",
+                      "example": "Se inserto el empleado de forma correcta.."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Ocurrio un error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "msg": {
+                      "type": "string",
+                      "example": "Ocurrio un error al insertar el registro."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/search/{fechaD}/{fechaH}/{sucursal}/apellido/{apellido}": {
+      "get": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Busca empleados por apellido y lista cantidad de ingresos y egresos.",
+        "description": "Servicio N° 3 solicitado para consultar la cantidad de ingresos y egresos dado por un apellido en una sucursal.",
+        "operationId": "search_1",
+        "parameters": [
+          {
+            "name": "fechaD",
+            "in": "path",
+            "description": "Fecha desde",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fechaH",
+            "in": "path",
+            "description": "Fecha hasta.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sucursal",
+            "in": "path",
+            "description": "Nombre de la sucursal.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "apellido",
+            "in": "path",
+            "description": "Apellido de la persona por la cual se quiere filtrar.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "msg": {
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Ocurrio un error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "msg": {
+                      "type": "string",
+                      "example": "Ocurrio un error al consultar los registros."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/search/{fechaD}/{fechaH}/{sucursal}/nombre/{nombre}": {
+      "get": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Busca empleados por nombre y lista cantidad de ingresos y egresos.",
+        "description": "Servicio N° 3 solicitado para consultar la cantidad de ingresos y egresos dado por un nombre en una sucursal.",
+        "operationId": "search_2",
+        "parameters": [
+          {
+            "name": "fechaD",
+            "in": "path",
+            "description": "Fecha desde",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fechaH",
+            "in": "path",
+            "description": "Fecha hasta.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sucursal",
+            "in": "path",
+            "description": "Nombre de la sucursal.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "nombre",
+            "in": "path",
+            "description": "nombre de la persona por la cual se quiere filtrar.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "msg": {
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Ocurrio un error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "msg": {
+                      "type": "string",
+                      "example": "Ocurrio un error al consultar los registros."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/average/{fechaD}/{fechaH}": {
+      "get": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Busca y devuelve un promedio de hombre y mujeres por sucursal.",
+        "description": "Servicio N° 4 solicitado para consultar promedio de hombres y mujeres por sucursal.",
+        "operationId": "search_3",
+        "parameters": [
+          {
+            "name": "fechaD",
+            "in": "path",
+            "description": "Fecha desde",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fechaH",
+            "in": "path",
+            "description": "Fecha hasta.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "msg": {
+                      "type": "string",
+                      "example": "Registros evaluados desde 01-01-2023 hasta 01-01-2024"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Ocurrio un error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "msg": {
+                      "type": "string",
+                      "example": "Ocurrio un error al consultar los registros."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

@@ -36,6 +36,7 @@ app.use((req, res, next) => {
   try {
     if (!req.headers["authorization"]) {
       res.send("Error no está autorizado por Token");
+      return;
     }
     var token = req.headers["authorization"].split(" ");
 

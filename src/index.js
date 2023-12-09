@@ -25,7 +25,7 @@ app.use(
 /* INICIO DEL MIDDLEWARE */
 
 app.use((req, res, next) => {
-  let autorizado = ["/users/login"];
+  let autorizado = ["/users/login", "/"];
   if (
     autorizado.includes(req.originalUrl) ||
     req.originalUrl.startsWith("/api-docs")
@@ -55,7 +55,9 @@ app.use((req, res, next) => {
 /* FIN DEL MIDDLEWARE */
 
 app.get("/", (req, res) => {
-  res.send("Hola Mundo!");
+  res.send(
+    "Bienvenido a API-BecleverTest, ingrese a /api-docs para obtener la información. "
+  );
 });
 
 app.use(rUsers); //Rutas de los usuarios

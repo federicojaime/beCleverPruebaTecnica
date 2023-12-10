@@ -5,15 +5,15 @@ const register = async (req, res) => {
   var respuesta = {
     ok: false,
     msg: "Ocurrio un error al consultar los registros.",
-    totalRegistros: 0,
-    data: [],
   };
   var verificar = {
+    idemployee: { type: "number", min: 1 },
     date: { type: "date" },
+    hora: { type: "time" },
   };
   var valid = new Validate(null);
   valid.validar(req.body, verificar);
-  if (valid.hasErrors()) { 
+  if (valid.hasErrors()) {
     res.status(409).json(valid.getErrors());
     return;
   }
@@ -28,9 +28,7 @@ const register = async (req, res) => {
       }
       respuesta.ok = true;
       respuesta.msg = "Se inserto el registro de forma correcta.";
-      respuesta.totalRegistros = results.length;
-      respuesta.data = results;
-      res.status(200).json(respuesta.msg);
+      res.status(200).json(respuesta);
     }
   );
 };
@@ -39,8 +37,6 @@ const registerEmployee = async (req, res) => {
   var respuesta = {
     ok: false,
     msg: "Ocurrio un error al consultar los registros.",
-    totalRegistros: 0,
-    data: [],
   };
   let conn = db();
   conn.query(
@@ -52,9 +48,7 @@ const registerEmployee = async (req, res) => {
       }
       respuesta.ok = true;
       respuesta.msg = "Se inserto el empleado de forma correcta.";
-      respuesta.totalRegistros = results.length;
-      respuesta.data = results;
-      res.status(200).json(respuesta.msg);
+      res.status(200).json(respuesta);
     }
   );
 };

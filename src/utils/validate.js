@@ -1,3 +1,12 @@
+function isNumeric(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
+function validateHhMm(value) {
+  var isValid = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(value);
+
+  return isValid;
+}
 class Validate {
   constructor(db) {
     this.conn = db;
@@ -21,7 +30,7 @@ class Validate {
               lastType = value;
               switch (value) {
                 case "number":
-                  if (!Number.isNumeric(v)) {
+                  if (!isNumeric(v)) {
                     this.errors.push(`${key} [${v}] no es un número válido.`);
                   }
                   break;
@@ -38,13 +47,9 @@ class Validate {
                   }
                   break;
                 case "time":
-                  const formato = "H:i:s";
-                  const horarioObj = new Date(`1970-01-01T${v}`);
-                  const horario = horarioObj.toISOString().slice(11, 19);
-                  if (horario !== v) {
-                    this.errors.push(
-                      `${key} [${v}] no es un horario válido. ${horario}`
-                    );
+                  let valid = validateHhMm(v);
+                  if (!valid) {
+                    this.errors.push(`${key} [${v}] no es un horario válido.`);
                   }
                   break;
                 case "array":

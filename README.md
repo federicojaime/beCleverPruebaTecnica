@@ -82,7 +82,7 @@ npm run dev</pre>
 
 3. Ejecución de la API:
 
-<pre>npm start</pre>
+<pre>npm run dev</pre>
 
 5. Documentación Adicional:
 

@@ -25,6 +25,7 @@
 ```
 └── 📁beCleverPruebaTecnica
     └── .dockerignore
+    └── .env
     └── .env.example
     └── Dockerfile
     └── package.json
@@ -37,11 +38,13 @@
         └── 📁db
             └── connection.js
         └── 📁docs
+            └── Beclever-test.postman_collection.json
             └── beclever.sql
         └── index.js
         └── openapi.json
         └── 📁utils
             └── config.js
+            └── validate.js
 ```
 
 - **/src:** Contiene el código fuente de la API.

@@ -1,0 +1,268 @@
+{
+	"info": {
+		"_postman_id": "86af2822-e1a8-4788-b43a-3e06cdad2c46",
+		"name": "Beclever-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27458970"
+	},
+	"item": [
+		{
+			"name": "r_user",
+			"item": [
+				{
+					"name": "http://localhost:3000/users/login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "bearer",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"fnj\",\r\n    \"pass\": \"admin123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDIyODcyNTgsImRhdGEiOnsiaWQiOjEsInVzZXIiOiJmbmoifSwiaWF0IjoxNzAyMjU4NDU4fQ.DRUYB1f47etnIJwDT_RkEnJTX2gkog2NmP51UpVSI-c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Todas las rutas referentes a usuarios."
+		},
+		{
+			"name": "r_search",
+			"item": [
+				{
+					"name": "http://localhost:3000/average/2023-12-02/2023-12-20",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDIyODcyNTgsImRhdGEiOnsiaWQiOjEsInVzZXIiOiJmbmoifSwiaWF0IjoxNzAyMjU4NDU4fQ.DRUYB1f47etnIJwDT_RkEnJTX2gkog2NmP51UpVSI-c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/average/2023-12-02/2023-12-20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"average",
+								"2023-12-02",
+								"2023-12-20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/search/2020-01-01/2024-12-12/Argentina/nombre/Federico",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDIyODcyNTgsImRhdGEiOnsiaWQiOjEsInVzZXIiOiJmbmoifSwiaWF0IjoxNzAyMjU4NDU4fQ.DRUYB1f47etnIJwDT_RkEnJTX2gkog2NmP51UpVSI-c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/search/2020-01-01/2024-12-12/Argentina/apellido/jaime",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"search",
+								"2020-01-01",
+								"2024-12-12",
+								"Argentina",
+								"apellido",
+								"jaime"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/search/2020-01-01/2024-12-12/Argentina/apellido/jaime",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/search/2020-01-01/2024-12-12/Argentina/apellido/jaime",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"search",
+								"2020-01-01",
+								"2024-12-12",
+								"Argentina",
+								"apellido",
+								"jaime"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Acá se encuentran todas las rutas referentes a busquedas y consultas."
+		},
+		{
+			"name": "r_register",
+			"item": [
+				{
+					"name": "http://localhost:3000/register",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDIyODcyNTgsImRhdGEiOnsiaWQiOjEsInVzZXIiOiJmbmoifSwiaWF0IjoxNzAyMjU4NDU4fQ.DRUYB1f47etnIJwDT_RkEnJTX2gkog2NmP51UpVSI-c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idemployee\": 2,\r\n  \"date\": \"2022-05-03\",\r\n  \"hora\": \"18:00:05\",\r\n  \"registertype\": 1,\r\n  \"businesslocation\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/register/employee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDIyODcyNTgsImRhdGEiOnsiaWQiOjEsInVzZXIiOiJmbmoifSwiaWF0IjoxNzAyMjU4NDU4fQ.DRUYB1f47etnIJwDT_RkEnJTX2gkog2NmP51UpVSI-c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Rebeca\",\r\n    \"apellido\": \"Pizarro\",\r\n    \"sexo\": \"F\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/register/employee",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"register",
+								"employee"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Todas las rutas registro de horarios."
+		}
+	]
+}

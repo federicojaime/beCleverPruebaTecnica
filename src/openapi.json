@@ -23,17 +23,19 @@
     },
     {
       "name": "register",
-      "description": "Todas las rutas referentes a usuarios."
+      "description": "Todas las rutas registro de horarios."
     },
     {
       "name": "search",
-      "description": "Todas las rutas referentes a usuarios."
+      "description": "Todas las rutas referentes a busquedas y consultas."
     }
   ],
   "paths": {
     "/users": {
       "post": {
-        "tags": ["users"],
+        "tags": [
+          "users"
+        ],
         "summary": "Crear nuevos usuarios al sistema",
         "description": "Crear nuevos usuarios al sistema",
         "operationId": "users_1",
@@ -42,7 +44,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "required": ["user", "pass"],
+                "required": [
+                  "user",
+                  "pass"
+                ],
                 "type": "object",
                 "properties": {
                   "user": {
@@ -116,7 +121,9 @@
     },
     "/users/login": {
       "post": {
-        "tags": ["users"],
+        "tags": [
+          "users"
+        ],
         "summary": "Login de usuario",
         "description": "Login de usuario para la obtención del JWT.",
         "operationId": "users_2",
@@ -125,7 +132,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "required": ["user", "pass"],
+                "required": [
+                  "user",
+                  "pass"
+                ],
                 "type": "object",
                 "properties": {
                   "user": {
@@ -180,7 +190,9 @@
     },
     "/register": {
       "post": {
-        "tags": ["register"],
+        "tags": [
+          "register"
+        ],
         "summary": "Es el servicio numero 2 solicitado en la prueba tecnica.",
         "description": "Registra de ingresos y egresos del personal.",
         "operationId": "register_1",
@@ -189,7 +201,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "required": ["user", "pass"],
+                "required": [
+                  "user",
+                  "pass"
+                ],
                 "type": "object",
                 "properties": {
                   "idEmployee": {
@@ -228,7 +243,7 @@
                     },
                     "msg": {
                       "type": "string",
-                      "example": "Se inserto el registro de forma correcta."
+                      "example": "Se inserto el registro de horario de forma correcta."
                     }
                   }
                 }
@@ -265,7 +280,9 @@
     },
     "/register/employee": {
       "post": {
-        "tags": ["register"],
+        "tags": [
+          "register"
+        ],
         "summary": "Endpoint extra para generar nuevos empleados.",
         "description": "Registra nuevos empleados.",
         "operationId": "register_2",
@@ -274,7 +291,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "required": ["user", "pass"],
+                "required": [
+                  "user",
+                  "pass"
+                ],
                 "type": "object",
                 "properties": {
                   "nombre": {
@@ -309,7 +329,7 @@
                     },
                     "msg": {
                       "type": "string",
-                      "example": "Se inserto el empleado de forma correcta.."
+                      "example": "Se inserto el empleado de forma correcta."
                     }
                   }
                 }
@@ -346,7 +366,9 @@
     },
     "/search/{fechaD}/{fechaH}/{sucursal}/apellido/{apellido}": {
       "get": {
-        "tags": ["search"],
+        "tags": [
+          "search"
+        ],
         "summary": "Busca empleados por apellido y lista cantidad de ingresos y egresos.",
         "description": "Servicio N° 3 solicitado para consultar la cantidad de ingresos y egresos dado por un apellido en una sucursal.",
         "operationId": "search_1",
@@ -439,7 +461,9 @@
     },
     "/search/{fechaD}/{fechaH}/{sucursal}/nombre/{nombre}": {
       "get": {
-        "tags": ["search"],
+        "tags": [
+          "search"
+        ],
         "summary": "Busca empleados por nombre y lista cantidad de ingresos y egresos.",
         "description": "Servicio N° 3 solicitado para consultar la cantidad de ingresos y egresos dado por un nombre en una sucursal.",
         "operationId": "search_2",
@@ -532,7 +556,9 @@
     },
     "/average/{fechaD}/{fechaH}": {
       "get": {
-        "tags": ["search"],
+        "tags": [
+          "search"
+        ],
         "summary": "Busca y devuelve un promedio de hombre y mujeres por sucursal.",
         "description": "Servicio N° 4 solicitado para consultar promedio de hombres y mujeres por sucursal.",
         "operationId": "search_3",

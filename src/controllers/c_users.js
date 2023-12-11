@@ -44,6 +44,16 @@ const loginUser = async (req, res) => {
     totalRegistros: 0,
     data: [],
   };
+  var verificar = {
+    user: { type: "string", min: 3, max: 50 },
+    pass: { type: "string", min: 3, max: 10 },
+  };
+  var valid = new Validate(null);
+  valid.validar(req.body, verificar);
+  if (valid.hasErrors()) {
+    res.status(409).json(valid.getErrors());
+    return;
+  }
   let conn = db();
   conn.query(
     `SELECT * FROM usuarios WHERE user = '${req.body.user}'`,

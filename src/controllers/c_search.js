@@ -1,4 +1,5 @@
 const db = require("../db/connection.js");
+const Validate = require("../utils/validate.js");
 
 const searchNombre = async (req, res) => {
   var respuesta = {
@@ -7,6 +8,18 @@ const searchNombre = async (req, res) => {
     totalRegistros: 0,
     data: [],
   };
+  var verificar = {
+    fechaD: { type: "date" },
+    fechaH: { type: "date" },
+    nombre: { type: "string", min: 3, max: 50 },
+    sucursal: { type: "string", min: 3, max: 50 },
+  };
+  var valid = new Validate(null);
+  valid.validar(req.params, verificar);
+  if (valid.hasErrors()) {
+    res.status(409).json(valid.getErrors());
+    return;
+  }
   let conn = db();
   conn.query(
     `SELECT
@@ -42,6 +55,18 @@ const searchApellido = async (req, res) => {
     totalRegistros: 0,
     data: [],
   };
+  var verificar = {
+    fechaD: { type: "date" },
+    fechaH: { type: "date" },
+    apellido: { type: "string", min: 3, max: 50 },
+    sucursal: { type: "string", min: 3, max: 50 },
+  };
+  var valid = new Validate(null);
+  valid.validar(req.params, verificar);
+  if (valid.hasErrors()) {
+    res.status(409).json(valid.getErrors());
+    return;
+  }
   let conn = db();
   conn.query(
     `SELECT
@@ -78,6 +103,16 @@ const average = async (req, res) => {
     totalRegistros: 0,
     data: [],
   };
+  var verificar = {
+    fechaD: { type: "date" },
+    fechaH: { type: "date" },
+  };
+  var valid = new Validate(null);
+  valid.validar(req.params, verificar);
+  if (valid.hasErrors()) {
+    res.status(409).json(valid.getErrors());
+    return;
+  }
   let conn = db();
   conn.query(
     `SELECT

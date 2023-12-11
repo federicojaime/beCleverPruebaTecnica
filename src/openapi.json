@@ -144,7 +144,7 @@
                   },
                   "pass": {
                     "type": "string",
-                    "example": "qwery123"
+                    "example": "admin123"
                   }
                 }
               }

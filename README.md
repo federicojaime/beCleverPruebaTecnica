@@ -25,7 +25,6 @@
 ```
 └── 📁beCleverPruebaTecnica
     └── .dockerignore
-    └── .env
     └── .env.example
     └── Dockerfile
     └── package.json
@@ -49,17 +48,35 @@
 
 - **/src:** Contiene el código fuente de la API.
 
-- **/docs:** Documentación adicional, instrucciones de uso, y detalles sobre la estructura de la base de datos.
+- **/docs:** Documentación adicional.
+
 - **/routes:** Contiene todas las rutas y endpoints que puede utilizar.
 - **/controller:** Contiene los controladores con el respectivo codigo y algoritmo para resolver la implementación solicitada desde las rutas.
-- **/db:** Toda la implementación para conectar con la base de datos.
+- **/db:** Toda la implementación para conectar con la base de datos*.
+
+**Base de datos:*
+> > Se ah utilizado para este proyecto una base de datos relacional utilizando el motor de MySQL.
 
   **Instrucciones de Uso**
 
-1. Clonación del Repositorio:
+1. Configuración de la base de datos:
+    * Iniciar script ubicado en src/docs/beclever.sql
+    * Ubicar el archivo en src/db/connection.js y modificar las variables en el caso de que fuese necesario.
+    
+```
+└── 📁beCleverPruebaTecnica
+       └── 📁src
+        └── 📁db
+            └── connection.js
+        └── 📁docs
+            └── Beclever-test.postman_collection.json
+            └── beclever.sql
+```
+
+2. Clonación del Repositorio:
 
 <pre>
-git clone https://github.com/tuusuario/beCleverPruebaTecnica.git
+git clone https://github.com/federicojaime/beCleverPruebaTecnica.git
 </pre>
 
 2. Instalación de Dependencias:
@@ -67,18 +84,13 @@ git clone https://github.com/tuusuario/beCleverPruebaTecnica.git
 <pre>cd beCleverPruebaTecnica
 npm install</pre>
 
-3. Configuración de la Base de Datos:
-
-- Siga las instrucciones en /docs/database_setup.md para configurar la base
-  de datos.
-
-4. Ejecución de la API:
+3. Ejecución de la API:
 
 <pre>npm start</pre>
 
 5. Documentación Adicional:
 
-- Revise la documentación en /docs para obtener información detallada sobre los endpoints disponibles y ejemplos de solicitudes.
+- Revise la documentación en /api-docs para obtener información detallada sobre los endpoints disponibles y ejemplos de solicitudes.
 
 **Notas Adicionales**
 

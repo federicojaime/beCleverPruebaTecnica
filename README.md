@@ -61,16 +61,11 @@
 
 1. Configuración de la base de datos:
     * Iniciar script ubicado en src/docs/beclever.sql
-    * Ubicar el archivo en src/db/connection.js y modificar las variables en el caso de que fuese necesario.
+    * Ubicar el archivo en .env.example en la raíz del proyecto, duplicar el archivo sin la palabra ".example" y modificar las variables en el caso de que fuese necesario.
     
 ```
-└── 📁beCleverPruebaTecnica
-       └── 📁src
-        └── 📁db
-            └── connection.js
-        └── 📁docs
-            └── Beclever-test.postman_collection.json
-            └── beclever.sql
+── 📁beCleverPruebaTecnica
+    └── .env.example
 ```
 
 2. Clonación del Repositorio:
@@ -82,7 +77,8 @@ git clone https://github.com/federicojaime/beCleverPruebaTecnica.git
 2. Instalación de Dependencias:
 
 <pre>cd beCleverPruebaTecnica
-npm install</pre>
+npm run dev</pre>
+
 
 3. Ejecución de la API:
 
@@ -91,6 +87,13 @@ npm install</pre>
 5. Documentación Adicional:
 
 - Revise la documentación en /api-docs para obtener información detallada sobre los endpoints disponibles y ejemplos de solicitudes.
+- Si utiliza postman, podrá encontrar la colección de las llamada para testear la API en la siguiente ruta.
+ ```
+└── 📁beCleverPruebaTecnica
+    └── 📁src
+        └── 📁docs
+            └── Beclever-test.postman_collection.json
+```
 
 **Notas Adicionales**
 
